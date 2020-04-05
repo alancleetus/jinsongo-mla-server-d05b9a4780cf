@@ -189,3 +189,4 @@ C:\Users\alan\Desktop\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\Mla
 C:\Users\alan\Desktop\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\MlaWebApi.csproj.CopyComplete
 C:\Users\alan\Desktop\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\MlaWebApi.dll
 C:\Users\alan\Desktop\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\MlaWebApi.pdb
+C:\Users\alan\Desktop\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Data.SqlServerCe.dll

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="MlaDatabaseDemo-Web.config Connection String" description="MlaDatabaseDemo Connection String used in web.config by the application to access the database." defaultValue="Data Source=mladatabase.cz1cx3q59ou9.us-west-1.rds.amazonaws.com,1433;Initial Catalog=MlaDatabaseDemo;User ID=admin;Password=password" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\alan\\Desktop\\jinsongo-mla-server-d05b9a4780cf\\MlaWebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MlaDatabaseDemo']/@connectionString" />
+  <parameter name="MlaDatabase-Web.config Connection String" description="MlaDatabase Connection String used in web.config by the application to access the database." defaultValue="Data Source=mladatabase.cz1cx3q59ou9.us-west-1.rds.amazonaws.com,1433; Initial Catalog=MlaDatabase; User ID=admin; Password=password" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\alan\\Desktop\\jinsongo-mla-server-d05b9a4780cf\\MlaWebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MlaDatabase']/@connectionString" />
   </parameter>
 </parameters>
