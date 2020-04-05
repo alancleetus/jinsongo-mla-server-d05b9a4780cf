@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MlaDatabaseSNSModelStoreContainer" CdmEntityContainer="MlaDatabaseSNSEntities">
+    <EntitySetMapping Name="group_keys">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.group_keys">
+        <MappingFragment StoreEntitySet="group_keys">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="encryptedGroupKey" ColumnName="encryptedGroupKey" />
+          <ScalarProperty Name="groupKeyVersion" ColumnName="groupKeyVersion" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group_status">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.group_status">
+        <MappingFragment StoreEntitySet="group_status">
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="posts">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.post">
+        <MappingFragment StoreEntitySet="posts">
+          <ScalarProperty Name="postId" ColumnName="postId" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="messagekey" ColumnName="messagekey" />
+          <ScalarProperty Name="digitalSignature" ColumnName="digitalSignature" />
+          <ScalarProperty Name="signer" ColumnName="signer" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="keyVersion" ColumnName="keyVersion" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="originalPostId" ColumnName="originalPostId" />
+          <ScalarProperty Name="postType" ColumnName="postType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_groups">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.user_groups">
+        <MappingFragment StoreEntitySet="user_groups">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_public_keys">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.user_public_keys">
+        <MappingFragment StoreEntitySet="user_public_keys">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="publicKey" ColumnName="publicKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

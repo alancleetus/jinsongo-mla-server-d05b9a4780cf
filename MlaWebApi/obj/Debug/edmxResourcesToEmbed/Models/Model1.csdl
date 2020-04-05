@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MlaDatabaseSNSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="group_keys">
+    <Key>
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="groupKeyVersion" />
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="encryptedGroupKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="groupKeyVersion" Type="Int32" Nullable="false" />
+    <Property Name="groupId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="group_status">
+    <Key>
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="groupId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="postId" />
+    </Key>
+    <Property Name="postId" Type="Int64" Nullable="false" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="messagekey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="digitalSignature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="signer" Type="Int64" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="keyVersion" Type="Int32" Nullable="false" />
+    <Property Name="groupId" Type="Int64" Nullable="false" />
+    <Property Name="originalPostId" Type="Int64" Nullable="false" />
+    <Property Name="postType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_groups">
+    <Key>
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="groupId" Type="Int64" Nullable="false" />
+    <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_public_keys">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="publicKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MlaDatabaseSNSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="group_keys" EntityType="Self.group_keys" />
+    <EntitySet Name="group_status" EntityType="Self.group_status" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="user_groups" EntityType="Self.user_groups" />
+    <EntitySet Name="user_public_keys" EntityType="Self.user_public_keys" />
+  </EntityContainer>
+</Schema>
