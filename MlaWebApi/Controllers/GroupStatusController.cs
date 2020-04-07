@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data; 
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -11,104 +13,56 @@ using System.Web;
 using System.Web.Http;
 using MlaWebApi.Models;
 
-
 namespace MlaWebApi.Controllers
 {
-     
-    public class UserGroupController : ApiController
+    public class GroupStatusController : ApiController
     {
         public string cfmgr = ConfigurationManager.ConnectionStrings["MlaDatabase"].ConnectionString;
         SqlConnection cnn = null;
 
-        public IEnumerable<user_groups> GetAllUserGroups()
+        public IEnumerable<group_status> GetAll()
         {
             cnn = new SqlConnection(cfmgr);
             cnn.Open();
 
-            SqlCommand comm = new SqlCommand("Select * from user_groups", cnn);
+            SqlCommand comm = new SqlCommand("Select * from group_status", cnn);
             SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
-            DataSet dsDatast = new DataSet("user_groups");
+            DataSet dsDatast = new DataSet("group_status");
             Sqlda.Fill(dsDatast);
 
             foreach (DataRow row in dsDatast.Tables[0].Rows)
             {
-                yield return new user_groups
+                yield return new group_status
                 {
-                    userId = Int32.Parse(Convert.ToString(row["userId"])),
                     groupId = Int32.Parse(Convert.ToString(row["groupId"])),
-                    groupName = Convert.ToString(row["groupName"])
+                    status = Convert.ToBoolean(row["status"]),
                 };
             }
 
         }
 
-        public IEnumerable<user_groups> GetAllGroups()
+        public IEnumerable<group_status> GetById(int groupId)
         {
             cnn = new SqlConnection(cfmgr);
             cnn.Open();
 
-            SqlCommand comm = new SqlCommand("Select DISTINCT groupId, groupName from user_groups", cnn);
+            SqlCommand comm = new SqlCommand("Select * from group_status where groupId=" + groupId, cnn);
             SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
-            DataSet dsDatast = new DataSet("user_groups");
+            DataSet dsDatast = new DataSet("group_status");
             Sqlda.Fill(dsDatast);
 
             foreach (DataRow row in dsDatast.Tables[0].Rows)
             {
-                yield return new user_groups
+                yield return new group_status
                 {
-                    userId = -1,
                     groupId = Int32.Parse(Convert.ToString(row["groupId"])),
-                    groupName = Convert.ToString(row["groupName"])
+                    status = Convert.ToBoolean(row["status"]),
                 };
             }
 
         }
 
-        public IEnumerable<user_groups> GetGroupsByUserId(int userId)
-        {
-            cnn = new SqlConnection(cfmgr);
-            cnn.Open();
-
-            SqlCommand comm = new SqlCommand("Select * from user_groups where userId="+userId + " ", cnn);
-            SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
-            DataSet dsDatast = new DataSet("user_groups");
-            Sqlda.Fill(dsDatast);
-
-            foreach (DataRow row in dsDatast.Tables[0].Rows)
-            {
-                yield return new user_groups
-                {
-                    userId = Int32.Parse(Convert.ToString(row["userId"])),
-                    groupId = Int32.Parse(Convert.ToString(row["groupId"])),
-                    groupName = Convert.ToString(row["groupName"])
-                };
-            }
-
-        }
-
-        public IEnumerable<user_groups> GetUsersByGroupId(int groupId)
-        {
-            cnn = new SqlConnection(cfmgr);
-            cnn.Open();
-
-            SqlCommand comm = new SqlCommand("Select * from user_groups where groupId=" + groupId + " ", cnn);
-            SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
-            DataSet dsDatast = new DataSet("user_groups");
-            Sqlda.Fill(dsDatast);
-
-            foreach (DataRow row in dsDatast.Tables[0].Rows)
-            {
-                yield return new user_groups
-                {
-                    userId = Int32.Parse(Convert.ToString(row["userId"])),
-                    groupId = Int32.Parse(Convert.ToString(row["groupId"])),
-                    groupName = Convert.ToString(row["groupName"])
-                };
-            }
-
-        }
-
-        public HttpResponseMessage CreateNewGroup(int userId, String groupName)
+        public HttpResponseMessage PostStatus(int groupId, String status)
         {
             HttpResponseMessage response;
             System.IO.StringWriter writer = new System.IO.StringWriter();
@@ -120,9 +74,9 @@ namespace MlaWebApi.Controllers
                     using (SqlConnection connection1 = new SqlConnection(cfmgr))
                     {
                         connection1.Open();
-                        SqlCommand command1 = new SqlCommand("Insert into user_groups(userId,groupName) values('"
-                    + userId
-                    + "','" + groupName 
+                        SqlCommand command1 = new SqlCommand("Insert into group_status(groupId,status) values('"
+                    + groupId
+                    + "','" + status
                     + "')", connection1);
 
                         int returnValue = command1.ExecuteNonQuery();
@@ -143,8 +97,7 @@ namespace MlaWebApi.Controllers
             return response;
         }
 
-        [HttpPost]
-        public HttpResponseMessage RmvUser(int userId, int groupId)
+        public HttpResponseMessage UpdateStatus(int groupId, String status)
         {
             HttpResponseMessage response;
             System.IO.StringWriter writer = new System.IO.StringWriter();
@@ -156,8 +109,8 @@ namespace MlaWebApi.Controllers
                     using (SqlConnection connection1 = new SqlConnection(cfmgr))
                     {
                         connection1.Open();
-                        SqlCommand command1 = new SqlCommand("DELETE FROM user_groups where userId = "+userId+" AND groupId="+groupId+"", connection1);
-                        
+                        SqlCommand command1 = new SqlCommand("Update group_status SET status='"+status+"' where groupId="+ groupId, connection1);
+
                         int returnValue = command1.ExecuteNonQuery();
                         writer.WriteLine("Rows to be affected by command1: {0}", returnValue);
 
@@ -176,4 +129,4 @@ namespace MlaWebApi.Controllers
             return response;
         }
     }
- }
+}

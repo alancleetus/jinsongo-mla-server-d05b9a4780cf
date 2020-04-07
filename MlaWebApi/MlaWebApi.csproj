@@ -138,6 +138,8 @@
     <Compile Include="Controllers\DeleteInstructorController.cs" />
     <Compile Include="Controllers\DeleteStudentController.cs" />
     <Compile Include="Controllers\EnrollStudentController.cs" />
+    <Compile Include="Controllers\GroupKeysController.cs" />
+    <Compile Include="Controllers\GroupStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
