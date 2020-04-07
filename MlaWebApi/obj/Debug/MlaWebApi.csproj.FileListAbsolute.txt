@@ -195,7 +195,6 @@ C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Mla
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\MlaWebApi.pdb
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Antlr3.Runtime.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\EntityFramework.dll
-C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\EntityFramework.SqlServer.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Newtonsoft.Json.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Net.Http.Formatting.dll
@@ -211,7 +210,6 @@ C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Sys
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Web.WebPages.Razor.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\WebGrease.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\EntityFramework.xml
-C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\EntityFramework.SqlServer.xml
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Newtonsoft.Json.xml
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Net.Http.Formatting.xml
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Web.Helpers.xml
@@ -222,7 +220,6 @@ C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Sys
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Web.WebPages.xml
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Web.WebPages.Deployment.xml
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\System.Web.WebPages.Razor.xml
-C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.csprojAssemblyReference.cache
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.csproj.CopyComplete
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.pdb

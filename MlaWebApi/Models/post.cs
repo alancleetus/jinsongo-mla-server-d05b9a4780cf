@@ -19,7 +19,7 @@ namespace MlaWebApi.Models
         public string messagekey { get; set; }
         public string digitalSignature { get; set; }
         public long signer { get; set; }
-        public byte[] timestamp { get; set; }
+        public System.DateTime timestamp { get; set; }
         public int keyVersion { get; set; }
         public long groupId { get; set; }
         public long originalPostId { get; set; }

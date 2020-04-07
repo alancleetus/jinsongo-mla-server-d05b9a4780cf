@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MlaDatabaseSNSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MlaDatabaseSNSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="group_keys">
           <Key>
             <PropertyRef Name="userId" />
@@ -28,12 +28,12 @@
           <Key>
             <PropertyRef Name="postId" />
           </Key>
-          <Property Name="postId" Type="bigint" Nullable="false" />
+          <Property Name="postId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="message" Type="varchar(max)" Nullable="false" />
           <Property Name="messagekey" Type="varchar(max)" Nullable="false" />
           <Property Name="digitalSignature" Type="varchar(max)" Nullable="false" />
           <Property Name="signer" Type="bigint" Nullable="false" />
-          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="timestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="keyVersion" Type="int" Nullable="false" />
           <Property Name="groupId" Type="bigint" Nullable="false" />
           <Property Name="originalPostId" Type="bigint" Nullable="false" />
@@ -45,7 +45,7 @@
             <PropertyRef Name="groupId" />
           </Key>
           <Property Name="userId" Type="bigint" Nullable="false" />
-          <Property Name="groupId" Type="bigint" Nullable="false" />
+          <Property Name="groupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="groupName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="user_public_keys">
@@ -62,8 +62,7 @@
           <EntitySet Name="user_groups" EntityType="Self.user_groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_public_keys" EntityType="Self.user_public_keys" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MlaDatabaseSNSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -95,7 +94,7 @@
           <Property Name="messagekey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="digitalSignature" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="signer" Type="Int64" Nullable="false" />
-          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="timestamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
           <Property Name="keyVersion" Type="Int32" Nullable="false" />
           <Property Name="groupId" Type="Int64" Nullable="false" />
           <Property Name="originalPostId" Type="Int64" Nullable="false" />
@@ -152,12 +151,12 @@
           <EntitySetMapping Name="posts">
             <EntityTypeMapping TypeName="MlaDatabaseSNSModel.post">
               <MappingFragment StoreEntitySet="posts">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
                 <ScalarProperty Name="postId" ColumnName="postId" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="messagekey" ColumnName="messagekey" />
                 <ScalarProperty Name="digitalSignature" ColumnName="digitalSignature" />
                 <ScalarProperty Name="signer" ColumnName="signer" />
-                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
                 <ScalarProperty Name="keyVersion" ColumnName="keyVersion" />
                 <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="originalPostId" ColumnName="originalPostId" />
