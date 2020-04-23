@@ -30,5 +30,6 @@ namespace MlaWebApi.Models
         public virtual DbSet<post> posts { get; set; }
         public virtual DbSet<user_groups> user_groups { get; set; }
         public virtual DbSet<user_public_keys> user_public_keys { get; set; }
+        public virtual DbSet<join_requests> join_requests { get; set; }
     }
 }

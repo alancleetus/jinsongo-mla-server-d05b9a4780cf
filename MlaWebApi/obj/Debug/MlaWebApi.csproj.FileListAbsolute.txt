@@ -223,3 +223,4 @@ C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Sys
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.csproj.CopyComplete
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.pdb
+C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Debug\MlaWebApi.csprojAssemblyReference.cache

@@ -48,7 +48,7 @@
       <PropertyRef Name="userId" />
     </Key>
     <Property Name="userId" Type="Int64" Nullable="false" />
-    <Property Name="publicKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="publicKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityContainer Name="MlaDatabaseSNSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="group_keys" EntityType="Self.group_keys" />
@@ -56,5 +56,14 @@
     <EntitySet Name="posts" EntityType="Self.post" />
     <EntitySet Name="user_groups" EntityType="Self.user_groups" />
     <EntitySet Name="user_public_keys" EntityType="Self.user_public_keys" />
+    <EntitySet Name="join_requests" EntityType="MlaDatabaseSNSModel.join_requests" />
   </EntityContainer>
+  <EntityType Name="join_requests">
+    <Key>
+      <PropertyRef Name="groupId" />
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="groupId" Type="Int64" Nullable="false" />
+    <Property Name="userId" Type="Int64" Nullable="false" />
+  </EntityType>
 </Schema>

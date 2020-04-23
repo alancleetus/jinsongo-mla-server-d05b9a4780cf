@@ -24,6 +24,14 @@
           <Property Name="groupId" Type="bigint" Nullable="false" />
           <Property Name="status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="join_requests">
+          <Key>
+            <PropertyRef Name="groupId" />
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="groupId" Type="bigint" Nullable="false" />
+          <Property Name="userId" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="posts">
           <Key>
             <PropertyRef Name="postId" />
@@ -53,11 +61,12 @@
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="bigint" Nullable="false" />
-          <Property Name="publicKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publicKey" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MlaDatabaseSNSModelStoreContainer">
           <EntitySet Name="group_keys" EntityType="Self.group_keys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="group_status" EntityType="Self.group_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="join_requests" EntityType="Self.join_requests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_groups" EntityType="Self.user_groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_public_keys" EntityType="Self.user_public_keys" Schema="dbo" store:Type="Tables" />
@@ -114,7 +123,7 @@
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="Int64" Nullable="false" />
-          <Property Name="publicKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publicKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MlaDatabaseSNSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="group_keys" EntityType="Self.group_keys" />
@@ -122,7 +131,16 @@
           <EntitySet Name="posts" EntityType="Self.post" />
           <EntitySet Name="user_groups" EntityType="Self.user_groups" />
           <EntitySet Name="user_public_keys" EntityType="Self.user_public_keys" />
+          <EntitySet Name="join_requests" EntityType="MlaDatabaseSNSModel.join_requests" />
         </EntityContainer>
+        <EntityType Name="join_requests">
+          <Key>
+            <PropertyRef Name="groupId" />
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="groupId" Type="Int64" Nullable="false" />
+          <Property Name="userId" Type="Int64" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -178,6 +196,14 @@
               <MappingFragment StoreEntitySet="user_public_keys">
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="publicKey" ColumnName="publicKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="join_requests">
+            <EntityTypeMapping TypeName="MlaDatabaseSNSModel.join_requests">
+              <MappingFragment StoreEntitySet="join_requests">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

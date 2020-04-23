@@ -53,5 +53,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="join_requests">
+      <EntityTypeMapping TypeName="MlaDatabaseSNSModel.join_requests">
+        <MappingFragment StoreEntitySet="join_requests">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
