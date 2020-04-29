@@ -225,3 +225,4 @@ C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\Mla
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\MlaWebApi.dll
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\bin\MlaWebApi.pdb
 C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\MlaWebApi.csproj.CopyComplete
+C:\Users\alan\Desktop\CSC 258\jinsongo-mla-server-d05b9a4780cf\MlaWebApi\obj\Release\MlaWebApi.csproj.CoreCompileInputs.cache

@@ -140,12 +140,12 @@ namespace MlaWebApi.Controllers
                 using (TransactionScope scope = new TransactionScope())
                 {
                     using (SqlConnection connection1 = new SqlConnection(cfmgr))
-                    {
+                    { 
                         connection1.Open();
-                        SqlCommand command1 = new SqlCommand("Insert into user_groups(userId,groupName) values('"
+                        SqlCommand command1 = new SqlCommand("Insert into user_groups(groupId,userId,groupName) Select MAX(u.groupId)+1, '"
                     + userId
-                    + "','" + groupName 
-                    + "')", connection1);
+                    + "','" + groupName
+                    + "' from user_groups as u", connection1);
 
                         int returnValue = command1.ExecuteNonQuery();
                         writer.WriteLine("Rows to be affected by command1: {0}", returnValue);
