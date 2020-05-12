@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
+using System.Web.Providers.Entities;
 using MlaWebApi.Models;
 
 
@@ -45,9 +46,9 @@ namespace MlaWebApi.Controllers
         public IEnumerable<user_groups> GetAllGroups()
         {
             cnn = new SqlConnection(cfmgr);
-            cnn.Open();
+            cnn.Open(); 
 
-            SqlCommand comm = new SqlCommand("Select DISTINCT groupId, groupName from user_groups", cnn);
+            SqlCommand comm = new SqlCommand("Select DISTINCT groupId, groupName from user_groups where groupName NOT LIKE '[_]%'", cnn);
             SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
             DataSet dsDatast = new DataSet("user_groups");
             Sqlda.Fill(dsDatast);
@@ -63,6 +64,8 @@ namespace MlaWebApi.Controllers
             }
 
         }
+
+
 
         public IEnumerable<user_groups> GetGroupsByUserId(int userId)
         {
@@ -86,6 +89,58 @@ namespace MlaWebApi.Controllers
 
         }
 
+        //select g.groupId, u.groupName, u.userId from group_status as g inner join user_groups as u on u.groupId=g.groupId where g.status = 0 and u.userId= 74;
+        public IEnumerable<user_groups> GetOutdatedGroups(int userId)
+        {
+            cnn = new SqlConnection(cfmgr);
+            cnn.Open();
+
+            SqlCommand comm = new SqlCommand("select g.groupId, u.groupName, u.userId from group_status as g inner join user_groups as u on u.groupId=g.groupId where g.status = 0 and u.userId=" + userId + " ", cnn);
+            SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
+            DataSet dsDatast = new DataSet("user_groups");
+            Sqlda.Fill(dsDatast);
+
+            foreach (DataRow row in dsDatast.Tables[0].Rows)
+            {
+                yield return new user_groups
+                {
+                    userId = Int32.Parse(Convert.ToString(row["userId"])),
+                    groupId = Int32.Parse(Convert.ToString(row["groupId"])),
+                    groupName = Convert.ToString(row["groupName"])
+                };
+            }
+        }
+
+
+            public IEnumerable<GroupMembers> GetMembersInGroupByUserId(string userId)
+        {
+            /*select ug2.groupId, ug2.userId, ug2.groupName, r.userName from user_groups as ug
+            inner join user_groups as ug2
+            on ug.groupId = ug2.groupId
+            inner join register as r on r.userId = ug2.userId
+            where ug.userId = 74;*/
+
+            cnn = new SqlConnection(cfmgr);
+            cnn.Open();
+
+            SqlCommand comm = new SqlCommand("select ug2.groupId, ug2.userId, ug2.groupName, r.userName from user_groups as ug inner join user_groups as ug2 on ug.groupId = ug2.groupId inner join register as r on r.userId = ug2.userId where ug.userId = '" + userId + "' ", cnn);
+
+            SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
+            DataSet dsDatast = new DataSet("GroupMembers");
+            Sqlda.Fill(dsDatast);
+
+            foreach (DataRow row in dsDatast.Tables[0].Rows)
+            {
+                yield return new GroupMembers
+                {
+                    userId = Convert.ToString(row["userId"]),
+                    groupId = Convert.ToString(row["groupId"]),
+                    groupName = Convert.ToString(row["groupName"]),
+                    userName = Convert.ToString(row["userName"])
+                };
+            }
+
+        }
         public IEnumerable<user_groups> GetUsersByGroupId(int groupId)
         {
             cnn = new SqlConnection(cfmgr);
@@ -129,6 +184,8 @@ namespace MlaWebApi.Controllers
             }
 
         }
+
+
 
         public HttpResponseMessage CreateNewGroup(int userId, String groupName)
         {

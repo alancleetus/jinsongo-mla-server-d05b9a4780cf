@@ -45,6 +45,32 @@ namespace MlaWebApi.Controllers
 
         }
 
+        //select r.groupId, g.groupName, r.userId, reg.userName from join_requests as r inner join user_groups as g on g.groupId = r.groupId inner join register as reg on r.userId = reg.userId where g.userId = 74;
+        public IEnumerable<JoinRequestWithInfo> GetRequestByUserId(string userId)
+        {
+            cnn = new SqlConnection(cfmgr);
+            cnn.Open();
+
+            SqlCommand comm = new SqlCommand("select r.groupId, g.groupName, r.userId, reg.userName from join_requests as r inner join user_groups as g on g.groupId = r.groupId inner join register as reg on r.userId = reg.userId where g.userId = '" + userId + "' ", cnn);
+            SqlDataAdapter Sqlda = new SqlDataAdapter(comm);
+            DataSet dsDatast = new DataSet("joinrequestwithinfo");
+            Sqlda.Fill(dsDatast);
+
+            foreach (DataRow row in dsDatast.Tables[0].Rows)
+            {
+                yield return new JoinRequestWithInfo
+                {
+                    userId = Int32.Parse(Convert.ToString(row["userId"])),
+                    groupId = Int32.Parse(Convert.ToString(row["groupId"])),
+                    userName = Convert.ToString(row["userName"]),
+                    groupName = Convert.ToString(row["groupName"]),
+
+                };
+            }
+
+        }
+
+
 
         public HttpResponseMessage CreateNewRequest(int userId, int groupId)
         {

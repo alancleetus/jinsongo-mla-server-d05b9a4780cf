@@ -161,8 +161,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Encrypted_post.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\GradeTask.cs" />
+    <Compile Include="Models\GroupMembers.cs" />
     <Compile Include="Models\group_keys.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -173,6 +175,7 @@
     <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\Instructor_tasks.cs" />
     <Compile Include="Models\Interest_group.cs" />
+    <Compile Include="Models\JoinRequestWithInfo.cs" />
     <Compile Include="Models\join_requests.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
